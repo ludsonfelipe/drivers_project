@@ -51,7 +51,7 @@ resource "google_datastream_stream" "cdc_travels"  {
     }
 
     destination_config {
-        destination_connection_profile = google_datastream_connection_profile.bucketz.id
+        destination_connection_profile = google_datastream_connection_profile.bucket.id
         gcs_destination_config  {
             file_rotation_mb = 200
             file_rotation_interval = "60s"

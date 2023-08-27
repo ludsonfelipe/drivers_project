@@ -1,11 +1,5 @@
 resource "google_pubsub_topic" "drivers" {
-  name = var.topic_drives
-}
-
-resource "google_storage_bucket" "drivers" {
-  name  = var.bucket_drivers
-  location = "US"
-  uniform_bucket_level_access = true
+  name = var.topic_drivers
 }
 
 resource "google_pubsub_subscription" "gcs_drivers" {
@@ -27,24 +21,8 @@ resource "google_pubsub_subscription" "gcs_drivers" {
   ]
 }
 
-# data "google_project" "project"{
-#     number = "asljdgbhasjikdbsad"
-# }
-
 resource "google_storage_bucket_iam_member" "admin" {
   bucket = google_storage_bucket.drivers.name
   role   = "roles/storage.admin"
   member = "serviceAccount:service-218122086508@gcp-sa-pubsub.iam.gserviceaccount.com"
-}
-
-resource "random_id" "random_number" {
-  byte_length = 8
-}
-
-variable "topic_drives" {
-  default = "drivers_loc"
-}
-
-variable "bucket_drivers" {
-  default = "drivers-bucket-821398721378"
 }

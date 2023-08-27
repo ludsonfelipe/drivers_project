@@ -1,11 +1,20 @@
-resource "google_storage_bucket" "auto-expire" {
-  name          = var.bucket_name
-  location      = project_region
+resource "google_storage_bucket" "relational" {
+  name          = var.bucket_cdc_relational
+  location      = var.project_region
 
 }
 
-esource "google_storage_bucket" "drivers" {
+resource "google_storage_bucket" "drivers" {
   name  = var.bucket_drivers
-  location = "US"
-  uniform_bucket_level_access = true
+  location = var.project_region
+}
+
+resource "google_storage_bucket" "users" {
+  name  = var.bucket_users
+  location = var.project_region
+}
+
+resource "google_storage_bucket" "travels" {
+  name  = var.bucket_travels
+  location = var.project_region
 }

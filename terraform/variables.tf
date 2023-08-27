@@ -6,15 +6,33 @@ variable "project_id" {
 variable "project_region" {
   default = "us-central1"
 }
-variable "bucket_name" {
+// buckets
+
+variable "bucket_cdc_relational" {
   default = "travels-bucket-${random_id.random_number.hex}"
 }
+variable "bucket_drivers" {
+  default = "drivers-bucket-${random_id.random_number.hex}"
+}
+variable "bucket_users" {
+  default = "users-bucket-${random_id.random_number.hex}"
+}
+variable "bucket_travels" {
+  default = "travels-bucket-${random_id.random_number.hex}"
+}
+
+// topics
+variable "topic_drivers" {
+  default = "drivers_loc"
+}
+// cloud sql
 variable "instance_cloud_sql" {
   default = "postgres_dbs"
 }
 variable "database_name" {
   default = "travels_db"
 }
+// datastream
 variable "user_datastream_db" {
     default = "datastream"
 }
