@@ -14,15 +14,14 @@ def generate_user_loc(user_list, seed, topic, project):
         x_loc = np.random.uniform(0, 100)
         y_loc = np.random.uniform(0, 100)
 
-        message = f"'x_loc': {x_loc}, 'y_loc': {y_loc}"
+        message = f"'user':{user},'x_loc': {x_loc}, 'y_loc': {y_loc}"
         future = publisher.publish(topic_path, message.encode("utf-8"))      
         print(f"User {user} location added to topic '{topic}'")
 
 def generate_loc(pending_users, active_drivers):
-    project_id = os.environ.get("PROJECT_ID")
-    user_topic = os.environ.get("USER_TOPIC_ID")
-    driver_topic =  os.environ.get("USER_TOPIC_ID")
-
+    project_id = "playground-s-11-80d756df"
+    user_topic = "users_loc"
+    driver_topic =  "drivers_loc"
     generate_user_loc(pending_users, seed=1, topic=user_topic, project=project_id)
     generate_user_loc(active_drivers, seed=2, topic=driver_topic, project=project_id)
 

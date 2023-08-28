@@ -9,33 +9,42 @@ variable "project_region" {
 // buckets
 
 variable "bucket_cdc_relational" {
-  default = "travels-bucket-${random_id.random_number.hex}"
+  default = "travels-bucket-312312312"
 }
 variable "bucket_drivers" {
-  default = "drivers-bucket-${random_id.random_number.hex}"
+  default = "drivers-bucket-4123123123"
 }
 variable "bucket_users" {
-  default = "users-bucket-${random_id.random_number.hex}"
+  default = "users-bucket-6436743743"
 }
 variable "bucket_travels" {
-  default = "travels-bucket-${random_id.random_number.hex}"
+  default = "travels-bucket-535235324"
 }
 
 // topics
 variable "topic_drivers" {
   default = "drivers_loc"
 }
+variable "topic_users" {
+  default = "users_loc"
+}
+variable "topic_travel" {
+  default = "travel_loc"
+}
 // cloud sql
 variable "instance_cloud_sql" {
-  default = "postgres_dbs"
+  default = "postgresdbs"
 }
 variable "database_name" {
   default = "travels_db"
 }
-// datastream
 variable "user_datastream_db" {
     default = "datastream"
 }
+variable "password_postgres" {
+  default = "password"
+}
+// datastream
 variable "datastream_name" {
   default = "cdc_travels"
 }

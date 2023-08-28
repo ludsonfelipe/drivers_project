@@ -2,6 +2,14 @@ resource "google_pubsub_topic" "drivers" {
   name = var.topic_drivers
 }
 
+resource "google_pubsub_topic" "users" {
+  name = var.topic_users
+}
+
+resource "google_pubsub_topic" "travel" {
+  name = var.topic_travel
+}
+
 resource "google_pubsub_subscription" "gcs_drivers" {
   name  = "drivers-subscription-gcs"
   topic = google_pubsub_topic.drivers.name

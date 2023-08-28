@@ -1,6 +1,6 @@
 resource "google_datastream_connection_profile" "cdc_travels" {
     display_name          = "Connection profile"
-    location              = project_region
+    location              = var.project_region
     connection_profile_id = var.datastream_conn_db
 
     postgresql_profile {
@@ -14,11 +14,11 @@ resource "google_datastream_connection_profile" "cdc_travels" {
 
 resource "google_datastream_connection_profile" "bucket" {
     display_name          = "Connection profile bucket"
-    location              = project_region
+    location              = var.project_region
     connection_profile_id = var.datastream_conn_bucket
 
     gcs_profile {
-        bucket    = var.bucket_name
+        bucket    = var.bucket_cdc_relational
         root_path = "/database_data"
     }
 }

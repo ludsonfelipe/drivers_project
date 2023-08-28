@@ -1,7 +1,7 @@
 resource "google_sql_database_instance" "instance" {
     name             = var.instance_cloud_sql
     database_version = "POSTGRES_15"
-    region           = project_region
+    region           = var.project_region
     settings {
         tier = "db-f1-micro"
 
@@ -44,14 +44,9 @@ resource "google_sql_database" "db" {
     name     = var.database_name
 }
 
-resource "random_password" "pwd" {
-    length = 16
-    special = false
-}
-
 resource "google_sql_user" "user" {
     name = var.user_datastream_db
     instance = google_sql_database_instance.instance.name
-    password = random_password.pwd.result
+    password = var.password_postgres
 
 }
