@@ -1,6 +1,3 @@
-resource "random_id" "random_number" {
-  byte_length = 8
-}
 variable "project_id" { 
 }
 variable "project_region" {
