@@ -13,25 +13,8 @@ resource "google_sql_database_instance" "instance" {
 
         ip_configuration {
 
-            // Datastream IPs will vary by region.
             authorized_networks {
-                value = "34.71.242.81"
-            }
-
-            authorized_networks {
-                value = "34.72.28.29"
-            }
-
-            authorized_networks {
-                value = "34.67.6.157"
-            }
-
-            authorized_networks {
-                value = "34.67.234.134"
-            }
-
-            authorized_networks {
-                value = "34.72.239.218"
+                value = "0.0.0.0/0"
             }
         }
     }

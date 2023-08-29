@@ -40,6 +40,21 @@ resource "google_datastream_stream" "cdc_travels"  {
                     schema = "public"
                     postgresql_tables {
                         table = "usuarios"
+                    }
+                    postgresql_tables {
+                        table = "motoristas"
+
+                    }
+                    postgresql_tables {
+                        table = "veiculos"
+
+                    }
+                    postgresql_tables {
+                        table = "viagens"
+
+                    }
+                    postgresql_tables {
+                        table = "pagamentos"
 
                     }
                 }
