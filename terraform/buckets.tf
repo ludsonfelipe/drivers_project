@@ -1,20 +1,24 @@
+resource "random_id" "random_number" {
+  byte_length = 8
+}
+
 resource "google_storage_bucket" "relational" {
-  name          = var.bucket_cdc_relational
+  name          = "cdc-bucket-${random_id.random_number.hex}"
   location      = var.project_region
 
 }
 
 resource "google_storage_bucket" "drivers" {
-  name  = var.bucket_drivers
+  name  = "drivers-bucket-${random_id.random_number.hex}"
   location = var.project_region
 }
 
 resource "google_storage_bucket" "users" {
-  name  = var.bucket_users
+  name  = "users-bucket-${random_id.random_number.hex}"
   location = var.project_region
 }
 
 resource "google_storage_bucket" "travels" {
-  name  = var.bucket_travels
+  name  = "travels-bucket-${random_id.random_number.hex}"
   location = var.project_region
 }
