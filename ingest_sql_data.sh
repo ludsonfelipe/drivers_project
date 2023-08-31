@@ -12,7 +12,7 @@ SQL_FILES=(
   "./source/generate_data/sql_data/users.sql"
   "./source/generate_data/sql_data/drivers.sql"
   "./source/generate_data/sql_data/cars.sql"
-  "./source/generate_data/sql_data/trip_1.sql"
+  "./source/generate_data/sql_data/trips.sql"
   "./source/generate_data/sql_data/pagamentos.sql"
   "./source/generate_data/sql_data/pending.sql"
   "./source/generate_data/sql_data/in_progress.sql"

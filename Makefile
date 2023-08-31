@@ -10,9 +10,20 @@ tf-plan:
 tf-apply:
 	terraform -chdir=./terraform apply
 
-data_stream_start_config:
+create_sql_tables:
 	chmod +x ./create_source.sh && ./create_source.sh
 
-ingest_data:
-	chmod +x ./ingest_data.sh && ./ingest_data.sh
+ingest_sql_data:
+	chmod +x ./ingest_data.sh && ./ingest_sql_data.sh
 
+install_requirements:
+	pip install -r ./source/generate_data/requirements.txt 
+
+send_user_and_driver_topic:
+	python ./source/generate_data/user_data.py
+
+send_travel_topic:
+	python ./source/generate_data/location_data.py
+
+send_all_topics:
+	install_requirements && send_user_and_driver_topic && send_all_topics

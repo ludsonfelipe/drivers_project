@@ -10,7 +10,7 @@ def generate_user_loc(user_list, seed, topic, project):
     topic_path = publisher.topic_path(project, topic)
 
     for user in user_list:
-        sleep(10)
+        sleep(1)
         x_loc = np.random.uniform(0, 100)
         y_loc = np.random.uniform(0, 100)
 
@@ -19,7 +19,7 @@ def generate_user_loc(user_list, seed, topic, project):
         print(f"User {user} location added to topic '{topic}'")
 
 def generate_loc(pending_users, active_drivers):
-    project_id = "playground-s-11-80d756df"
+    project_id = "playground-s-11-dafce21a"
     user_topic = "users_loc"
     driver_topic =  "drivers_loc"
     generate_user_loc(pending_users, seed=1, topic=user_topic, project=project_id)
