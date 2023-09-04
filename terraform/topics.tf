@@ -25,7 +25,7 @@ resource "google_pubsub_subscription" "gcs_drivers" {
   }
   depends_on = [ 
     google_storage_bucket.drivers,
-    google_storage_bucket_iam_member.admin,
+    google_storage_bucket_iam_member.admindrivers,
   ]
 }
 
@@ -44,7 +44,7 @@ resource "google_pubsub_subscription" "gcs_travels" {
   }
   depends_on = [ 
     google_storage_bucket.travels,
-    google_storage_bucket_iam_member.admin,
+    google_storage_bucket_iam_member.admintravels,
   ]
 }
 
@@ -63,24 +63,24 @@ resource "google_pubsub_subscription" "gcs_users" {
   }
   depends_on = [ 
     google_storage_bucket.users,
-    google_storage_bucket_iam_member.admin,
+    google_storage_bucket_iam_member.adminusers,
   ]
 }
 
 
-resource "google_storage_bucket_iam_member" "admin" {
+resource "google_storage_bucket_iam_member" "admindrivers" {
   bucket = google_storage_bucket.drivers.name
   role   = "roles/storage.admin"
   member = "serviceAccount:service-218122086508@gcp-sa-pubsub.iam.gserviceaccount.com"
 }
 
-resource "google_storage_bucket_iam_member" "admin" {
+resource "google_storage_bucket_iam_member" "adminusers" {
   bucket = google_storage_bucket.users.name
   role   = "roles/storage.admin"
   member = "serviceAccount:service-218122086508@gcp-sa-pubsub.iam.gserviceaccount.com"
 }
 
-resource "google_storage_bucket_iam_member" "admin" {
+resource "google_storage_bucket_iam_member" "admintravels" {
   bucket = google_storage_bucket.travels.name
   role   = "roles/storage.admin"
   member = "serviceAccount:service-218122086508@gcp-sa-pubsub.iam.gserviceaccount.com"
