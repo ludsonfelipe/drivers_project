@@ -10,6 +10,12 @@ resource "google_pubsub_topic" "travels" {
   name = var.topic_travel
 }
 
+resource "google_project_service_identity" "pubsub_id" {
+  provider = google-beta
+  project = var.project_id
+  service = "pubsub.googleapis.com"
+}
+
 resource "google_pubsub_subscription" "gcs_drivers" {
   name  = "drivers-subscription-gcs"
   topic = google_pubsub_topic.drivers.name
@@ -67,21 +73,20 @@ resource "google_pubsub_subscription" "gcs_users" {
   ]
 }
 
-
 resource "google_storage_bucket_iam_member" "admindrivers" {
   bucket = google_storage_bucket.drivers.name
   role   = "roles/storage.admin"
-  member = "serviceAccount:service-218122086508@gcp-sa-pubsub.iam.gserviceaccount.com"
+  member = "serviceAccount:${google_project_service_identity.pubsub_id.email}"
 }
 
 resource "google_storage_bucket_iam_member" "adminusers" {
   bucket = google_storage_bucket.users.name
   role   = "roles/storage.admin"
-  member = "serviceAccount:service-218122086508@gcp-sa-pubsub.iam.gserviceaccount.com"
+  member = "serviceAccount:${google_project_service_identity.pubsub_id.email}"
 }
 
 resource "google_storage_bucket_iam_member" "admintravels" {
   bucket = google_storage_bucket.travels.name
   role   = "roles/storage.admin"
-  member = "serviceAccount:service-218122086508@gcp-sa-pubsub.iam.gserviceaccount.com"
+  member = "serviceAccount:${google_project_service_identity.pubsub_id.email}"
 }
