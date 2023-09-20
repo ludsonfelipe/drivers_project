@@ -18,7 +18,7 @@ resource "google_datastream_connection_profile" "bucket" {
     connection_profile_id = var.datastream_conn_bucket
 
     gcs_profile {
-        bucket    = google_storage_bucket.relational.name
+        bucket    = google_storage_bucket.bronze.name
         root_path = "/database_data"
     }
 }

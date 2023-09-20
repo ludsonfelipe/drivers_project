@@ -25,6 +25,6 @@ send_user_and_driver_topic:
 send_travel_topic:
 	python ./source/generate_data/location_data.py
 
-send_all_topics:
-	install_requirements send_user_and_driver_topic send_travel_topic
+send_all_topics: install_requirements send_user_and_driver_topic send_travel_topic
+
 	
