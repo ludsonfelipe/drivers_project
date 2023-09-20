@@ -1,4 +1,4 @@
-start_services:
+enable_services:
 	chmod +x ./enable_services.sh && ./enable_services.sh 
 
 tf-init:
@@ -10,7 +10,7 @@ tf-plan:
 tf-apply:
 	terraform -chdir=./terraform apply
 
-create_sql_tables:
+create_source_code:
 	chmod +x ./create_source.sh && ./create_source.sh
 
 ingest_sql_data:
