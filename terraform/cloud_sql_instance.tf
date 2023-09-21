@@ -19,7 +19,7 @@ resource "google_sql_database_instance" "instance" {
         }
     }
 
-    deletion_protection  = "true"
+    deletion_protection  = "false"
 }
 
 resource "google_sql_database" "db" {
@@ -31,5 +31,4 @@ resource "google_sql_user" "user" {
     name = var.user_datastream_db
     instance = google_sql_database_instance.instance.name
     password = var.password_postgres
-
 }
