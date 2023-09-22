@@ -7,3 +7,9 @@ resource "google_storage_bucket" "bronze" {
   location = var.project_region
   force_destroy = true
 }
+
+resource "google_storage_bucket" "silver" {
+  name  = "silver-layer-${random_id.random_number.hex}"
+  location = var.project_region
+  force_destroy = true
+}
